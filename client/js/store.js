@@ -27,7 +27,7 @@ const Store = (() => {
   let config = {
     store_name: 'KICKS VAULT',
     store_tagline: 'Authenticated Heat. Delivered Fresh.',
-    whatsapp_number: '+919876543210',
+    whatsapp_number: '+91702110947',
     whatsapp_default_message: 'Hi, I am interested in these sneakers from your catalog:',
     currency_symbol: '₹',
     currency_code: 'INR',
@@ -187,7 +187,7 @@ const Store = (() => {
 
   // ── WhatsApp Message Formatter ──
   function buildWhatsAppUrl(items = null, singleProduct = null, singleSize = null) {
-    const number = (config.whatsapp_number || '+919876543210').replace(/[^0-9]/g, '');
+    const number = (config.whatsapp_number || '+91702110947').replace(/[^0-9]/g, '');
     const origin = window.location.origin;
 
     let message = '';

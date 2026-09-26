@@ -50,11 +50,12 @@ router.get('/config', cachePolicy.config, (req, res) => {
     const db = getDb();
     const settings = db.prepare('SELECT * FROM catalog_settings WHERE id = 1').get();
     
+    const defaultWa = process.env.WHATSAPP_NUMBER || '+91702110947';
     const response = settings ? {
       store_name: settings.store_name,
       store_tagline: settings.store_tagline,
       active_theme: settings.active_theme,
-      whatsapp_number: settings.whatsapp_number,
+      whatsapp_number: process.env.WHATSAPP_NUMBER || settings.whatsapp_number || defaultWa,
       whatsapp_default_message: settings.whatsapp_default_message,
       currency_symbol: settings.currency_symbol,
       currency_code: settings.currency_code,
@@ -63,7 +64,7 @@ router.get('/config', cachePolicy.config, (req, res) => {
       store_name: 'KICKS VAULT',
       store_tagline: 'Authenticated Heat. Delivered Fresh.',
       active_theme: 'editorial_boutique',
-      whatsapp_number: '+919876543210',
+      whatsapp_number: defaultWa,
       whatsapp_default_message: 'Hi, I am interested in these sneakers from your catalog:',
       currency_symbol: '₹',
       currency_code: 'INR',

@@ -172,14 +172,20 @@ function initializeDatabase() {
       ON sync_logs(source_platform, started_at);
   `);
 
-  // Insert default settings if empty
+  // Insert default settings if empty, or sync whatsapp_number from env
+  const waNumber = process.env.WHATSAPP_NUMBER || '+91702110947';
   const settingsCount = db.prepare('SELECT COUNT(*) as count FROM catalog_settings').get();
   if (settingsCount.count === 0) {
     db.prepare(`
       INSERT INTO catalog_settings (id, store_name, store_tagline, whatsapp_number, active_theme)
-      VALUES (1, 'KICKS VAULT | Premium Sneakers', 'Authenticated Heat. Delivered Fresh.', '+919876543210', 'editorial_boutique')
-    `).run();
-    console.log('[DB] Default catalog settings inserted.');
+      VALUES (1, 'KICKS VAULT | Premium Sneakers', 'Authenticated Heat. Delivered Fresh.', @waNumber, 'editorial_boutique')
+    `).run({ waNumber });
+    console.log('[DB] Default catalog settings inserted with WhatsApp number:', waNumber);
+  } else if (process.env.WHATSAPP_NUMBER) {
+    db.prepare(`
+      UPDATE catalog_settings SET whatsapp_number = @waNumber WHERE id = 1
+    `).run({ waNumber: process.env.WHATSAPP_NUMBER });
+    console.log('[DB] Synced catalog_settings WhatsApp number from env:', process.env.WHATSAPP_NUMBER);
   }
 
   console.log('[DB] All tables and indexes initialized successfully.');
