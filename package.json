@@ -1,0 +1,32 @@
+{
+  "name": "catalog-maker",
+  "version": "1.0.0",
+  "description": "High-Speed Premium Sneaker Catalog Platform with Shopify & WooCommerce Sync",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node server/db/seed.js"
+  },
+  "keywords": [
+    "catalog",
+    "sneakers",
+    "shopify",
+    "woocommerce",
+    "whatsapp"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "compression": "^1.8.2",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.3",
+    "express": "^5.2.1",
+    "morgan": "^1.12.1",
+    "uuid": "^14.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

@@ -1,0 +1,323 @@
+/* ═══════════════════════════════════════════════════════════
+   DESIGN 1: "Editorial Boutique"
+   Inspired by Kith & Aimé Leon Dore
+   
+   Off-white canvas, editorial serif + clean sans typography,
+   muted clay/slate accents, luxury minimalist aesthetic
+   ═══════════════════════════════════════════════════════════ */
+
+[data-theme="editorial_boutique"] {
+  --bg-primary: #F9F9F6;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F0EEEB;
+  --bg-card: #FFFFFF;
+  --bg-nav: rgba(249, 249, 246, 0.92);
+  --bg-modal: #FFFFFF;
+  --bg-input: #F5F3F0;
+  --bg-hover: #F0EEEB;
+  --bg-skeleton: linear-gradient(90deg, #EEECEB 25%, #F5F3F0 50%, #EEECEB 75%);
+
+  --text-primary: #1A1714;
+  --text-secondary: #6B6560;
+  --text-tertiary: #9C958E;
+  --text-inverse: #FAFAF8;
+
+  --accent: #8B7355;
+  --accent-hover: #7A6348;
+  --accent-subtle: rgba(139, 115, 85, 0.08);
+  --accent-border: rgba(139, 115, 85, 0.15);
+
+  --border: rgba(26, 23, 20, 0.08);
+  --border-strong: rgba(26, 23, 20, 0.15);
+
+  --pill-bg: #F0EEEB;
+  --pill-active-bg: #1A1714;
+  --pill-active-text: #FAFAF8;
+  --pill-count-bg: rgba(0,0,0,0.06);
+  --pill-active-count-bg: rgba(255,255,255,0.2);
+
+  --price-color: #1A1714;
+  --discount-bg: #E8DFD4;
+  --discount-text: #8B7355;
+  --stock-in: #5C8A5C;
+  --stock-out: #C0796C;
+
+  --card-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  --card-hover-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  --card-border: 1px solid rgba(0,0,0,0.04);
+
+  --size-tag-bg: #F5F3F0;
+  --size-tag-text: #6B6560;
+
+  --toast-bg: #1A1714;
+  --toast-text: #FAFAF8;
+
+  --wishlist-fab-bg: #1A1714;
+  --wishlist-fab-text: #FAFAF8;
+  --wishlist-badge-bg: #8B7355;
+
+  --tray-bg: #FFFFFF;
+  --tray-border: 1px solid rgba(0,0,0,0.06);
+  --tray-shadow: 0 -4px 30px rgba(0,0,0,0.1);
+
+  --sort-bg: #F0EEEB;
+  --sort-hover: #E5E2DD;
+  --sort-active: #1A1714;
+  --sort-active-text: #FAFAF8;
+
+  --page-btn-bg: #F0EEEB;
+  --page-btn-active: #1A1714;
+  --page-btn-active-text: #FAFAF8;
+
+  --search-bg: #F0EEEB;
+  --search-focus-bg: #FFFFFF;
+  --search-focus-shadow: 0 0 0 3px rgba(139, 115, 85, 0.15);
+  --suggestions-bg: #FFFFFF;
+  --suggestion-hover: #F9F7F5;
+
+  --font-heading: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ── Header ── */
+[data-theme="editorial_boutique"] .site-header {
+  border-bottom: 1px solid var(--border);
+}
+[data-theme="editorial_boutique"] .header-logo {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: var(--font-2xl);
+  letter-spacing: -0.01em;
+}
+
+/* ── Category Nav ── */
+[data-theme="editorial_boutique"] .category-nav {
+  background: var(--bg-nav);
+  border-bottom: 1px solid var(--border);
+}
+[data-theme="editorial_boutique"] .category-pill {
+  background: var(--pill-bg);
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+[data-theme="editorial_boutique"] .category-pill:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+[data-theme="editorial_boutique"] .category-pill.active {
+  background: var(--pill-active-bg);
+  color: var(--pill-active-text);
+}
+[data-theme="editorial_boutique"] .category-pill .count {
+  background: var(--pill-count-bg);
+}
+[data-theme="editorial_boutique"] .category-pill.active .count {
+  background: var(--pill-active-count-bg);
+}
+
+/* ── Product Cards ── */
+[data-theme="editorial_boutique"] .product-card {
+  background: var(--bg-card);
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+[data-theme="editorial_boutique"] .product-card:hover {
+  box-shadow: var(--card-hover-shadow);
+}
+[data-theme="editorial_boutique"] .product-card-image {
+  background: var(--bg-tertiary);
+}
+[data-theme="editorial_boutique"] .product-card-image .placeholder-img {
+  background: var(--bg-tertiary);
+  color: var(--text-tertiary);
+}
+[data-theme="editorial_boutique"] .product-card-badge {
+  background: var(--accent);
+  color: var(--text-inverse);
+}
+[data-theme="editorial_boutique"] .product-card-badge.out-of-stock {
+  background: var(--stock-out);
+}
+[data-theme="editorial_boutique"] .product-card-wishlist {
+  background: rgba(255,255,255,0.85);
+  color: var(--text-secondary);
+  backdrop-filter: blur(8px);
+}
+[data-theme="editorial_boutique"] .product-card-wishlist.active {
+  color: #E05050;
+  background: rgba(255,255,255,0.95);
+}
+[data-theme="editorial_boutique"] .product-card-title {
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  color: var(--text-primary);
+}
+[data-theme="editorial_boutique"] .product-card-sku {
+  color: var(--text-tertiary);
+}
+[data-theme="editorial_boutique"] .product-card-price .current {
+  color: var(--price-color);
+  font-family: var(--font-body);
+}
+[data-theme="editorial_boutique"] .product-card-price .discount {
+  background: var(--discount-bg);
+  color: var(--discount-text);
+}
+[data-theme="editorial_boutique"] .product-card-sizes .size-tag {
+  background: var(--size-tag-bg);
+  color: var(--size-tag-text);
+}
+[data-theme="editorial_boutique"] .product-card-stock.in-stock { color: var(--stock-in); }
+[data-theme="editorial_boutique"] .product-card-stock.out-of-stock { color: var(--stock-out); }
+[data-theme="editorial_boutique"] .product-card-enquiry-btn {
+  background: var(--accent);
+  color: var(--text-inverse);
+}
+[data-theme="editorial_boutique"] .product-card-enquiry-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* ── Skeleton ── */
+[data-theme="editorial_boutique"] .skeleton {
+  background: var(--bg-skeleton);
+}
+[data-theme="editorial_boutique"] .skeleton-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: var(--card-border);
+}
+
+/* ── Modal ── */
+[data-theme="editorial_boutique"] .product-modal {
+  background: var(--bg-modal);
+}
+[data-theme="editorial_boutique"] .modal-drag-handle { background: var(--text-tertiary); }
+[data-theme="editorial_boutique"] .modal-close {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* ── Search ── */
+[data-theme="editorial_boutique"] .search-bar input {
+  background: var(--search-bg);
+  color: var(--text-primary);
+}
+[data-theme="editorial_boutique"] .search-bar input:focus {
+  background: var(--search-focus-bg);
+  box-shadow: var(--search-focus-shadow);
+}
+[data-theme="editorial_boutique"] .search-bar .search-clear {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+[data-theme="editorial_boutique"] .search-suggestions {
+  background: var(--suggestions-bg);
+  border: 1px solid var(--border);
+}
+[data-theme="editorial_boutique"] .search-suggestion-item:hover {
+  background: var(--suggestion-hover);
+}
+
+/* ── Sort ── */
+[data-theme="editorial_boutique"] .sort-btn {
+  background: var(--sort-bg);
+  color: var(--text-secondary);
+}
+[data-theme="editorial_boutique"] .sort-btn:hover { background: var(--sort-hover); }
+[data-theme="editorial_boutique"] .sort-menu {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+[data-theme="editorial_boutique"] .sort-option:hover { background: var(--bg-hover); }
+[data-theme="editorial_boutique"] .sort-option.active {
+  background: var(--sort-active);
+  color: var(--sort-active-text);
+}
+
+/* ── Pagination ── */
+[data-theme="editorial_boutique"] .pagination button {
+  background: var(--page-btn-bg);
+  color: var(--text-secondary);
+}
+[data-theme="editorial_boutique"] .pagination button:hover { background: var(--sort-hover); }
+[data-theme="editorial_boutique"] .pagination button.active {
+  background: var(--page-btn-active);
+  color: var(--page-btn-active-text);
+}
+[data-theme="editorial_boutique"] .pagination button:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ── Tray ── */
+[data-theme="editorial_boutique"] .enquiry-tray {
+  background: var(--tray-bg);
+  border-top: var(--tray-border);
+  box-shadow: var(--tray-shadow);
+}
+[data-theme="editorial_boutique"] .enquiry-tray-count { color: var(--text-primary); }
+
+/* ── Toast ── */
+[data-theme="editorial_boutique"] .toast {
+  background: var(--toast-bg);
+  color: var(--toast-text);
+}
+
+/* ── Wishlist FAB ── */
+[data-theme="editorial_boutique"] .wishlist-fab {
+  background: var(--wishlist-fab-bg);
+  color: var(--wishlist-fab-text);
+}
+[data-theme="editorial_boutique"] .wishlist-fab .badge {
+  background: var(--wishlist-badge-bg);
+  color: #fff;
+}
+
+/* ── Footer ── */
+[data-theme="editorial_boutique"] .site-footer {
+  border-top: 1px solid var(--border);
+  color: var(--text-tertiary);
+}
+
+/* ── Section title (editorial feel) ── */
+[data-theme="editorial_boutique"] .section-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-3xl);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+}
+@media (min-width: 768px) {
+  [data-theme="editorial_boutique"] .section-title {
+    font-size: var(--font-4xl);
+  }
+}
+
+/* ── Modal product info styling ── */
+[data-theme="editorial_boutique"] .modal-product-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-2xl);
+  font-weight: 400;
+  line-height: 1.2;
+}
+[data-theme="editorial_boutique"] .modal-product-price {
+  font-family: var(--font-body);
+  font-size: var(--font-xl);
+  font-weight: 800;
+}
+[data-theme="editorial_boutique"] .modal-carousel {
+  background: var(--bg-tertiary);
+}
+[data-theme="editorial_boutique"] .modal-carousel-dot {
+  background: rgba(0,0,0,0.2);
+}
+[data-theme="editorial_boutique"] .modal-carousel-dot.active {
+  background: var(--accent);
+}
+[data-theme="editorial_boutique"] .modal-carousel-nav {
+  background: rgba(255,255,255,0.85);
+  color: var(--text-primary);
+  backdrop-filter: blur(8px);
+}

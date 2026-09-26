@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="editorial_boutique">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>KICKS VAULT — Authenticated Heat & Limited Sneaker Drops</title>
+  <meta name="description" content="Discover rare, verified sneakers, retro high-tops, and hype streetwear. Browse high-density silhouettes, curated colorways, and enquire directly on WhatsApp.">
+  <meta name="theme-color" content="#1A1714">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="KICKS VAULT — Authenticated Heat & Limited Sneaker Drops">
+  <meta property="og:description" content="Browse verified sneakers, retro silhouettes, and designer collaborations. Instant WhatsApp quotes.">
+  <meta property="og:type" content="website">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/theme-editorial.css">
+  <link rel="stylesheet" href="css/theme-hype.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       SITE HEADER
+       ═══════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-brand-wrap" style="display: flex; align-items: baseline; gap: var(--space-3); min-width: 0;">
+        <a href="/" class="header-logo" id="store-logo">KICKS VAULT</a>
+        <span class="header-tagline" id="store-tagline">Authenticated Heat. Delivered Fresh.</span>
+      </div>
+
+      <!-- Live Autocomplete Search -->
+      <div class="search-bar" role="search">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="search" 
+          id="search-input" 
+          placeholder="Search silhouette, SKU, or colorway..." 
+          autocomplete="off"
+          aria-label="Search sneaker catalog"
+        />
+        <button class="search-clear" id="search-clear" title="Clear search" aria-label="Clear search">✕</button>
+        <div class="search-suggestions" id="search-suggestions" role="listbox"></div>
+      </div>
+
+      <!-- Header Actions: Theme Switcher & Wishlist -->
+      <div class="header-actions">
+        <button class="theme-switch-btn" id="theme-switch-btn" title="Toggle between Editorial and Hype design templates">
+          <span class="icon">🎨</span>
+          <span id="theme-label">✨ <strong>Editorial</strong> / Hype</span>
+        </button>
+
+        <button class="header-btn" id="header-wishlist-btn" title="Open saved wishlist" aria-label="Wishlist">
+          <span>♡</span>
+          <span class="badge" id="header-wishlist-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       STICKY CATEGORY NAVIGATION BAR
+       ═══════════════════════════════════════════════ -->
+  <nav class="category-nav" aria-label="Sneaker categories">
+    <div class="container">
+      <div class="category-nav-inner" id="category-nav-inner">
+        <!-- Rendered dynamically by app.js -->
+        <button class="category-pill active" data-slug="">
+          <span>All Silhouettes</span>
+          <span class="count">...</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       CATALOG MAIN CONTAINER
+       ═══════════════════════════════════════════════ -->
+  <main class="container" style="padding-top: var(--space-6); min-height: 60vh;">
+    <!-- Active Section Header & Filter Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <span class="result-count" id="result-count">Loading sneakers...</span>
+        
+        <!-- Filter chips -->
+        <button class="filter-chip" id="filter-instock" title="Filter in-stock sneakers">
+          <span>In Stock Only</span>
+        </button>
+        <button class="filter-chip" id="filter-featured" title="Filter featured heat drops">
+          <span>🔥 Featured Drops</span>
+        </button>
+      </div>
+
+      <div class="toolbar-right">
+        <!-- Sort Dropdown -->
+        <div class="sort-dropdown">
+          <button class="sort-btn" id="sort-btn" aria-haspopup="true">
+            <span>Sort:</span>
+            <strong id="sort-label">Newest Arrivals</strong>
+            <span style="font-size: 0.7rem; opacity: 0.6;">▼</span>
+          </button>
+          <div class="sort-menu" id="sort-menu" role="menu">
+            <button class="sort-option active" data-sort="newest">Newest Arrivals</button>
+            <button class="sort-option" data-sort="price_asc">Price: Low to High</button>
+            <button class="sort-option" data-sort="price_desc">Price: High to Low</button>
+            <button class="sort-option" data-sort="name_asc">Alphabetical (A-Z)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Grid Container -->
+    <section class="product-grid" id="product-grid" aria-label="Sneaker catalog listings">
+      <!-- Populated dynamically with skeleton loaders and product cards -->
+    </section>
+
+    <!-- Pagination Controls -->
+    <nav class="pagination" id="pagination" aria-label="Catalog pages">
+      <!-- Populated dynamically -->
+    </nav>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p style="font-weight: 600; margin-bottom: 4px;">KICKS VAULT • CURATED SNEAKER ARCHIVE</p>
+      <p>100% Verified Authenticity Guarantee • Express Shipping • Direct WhatsApp VIP Support</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       PRODUCT DETAIL MODAL / BOTTOM SHEET
+       ═══════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="product-modal-backdrop"></div>
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true">
+    <div class="modal-drag-handle"></div>
+    <button class="modal-close" aria-label="Close modal">✕</button>
+    <div class="modal-container">
+      <!-- Rendered dynamically by modal.js -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       FULLSCREEN MULTI-ANGLE LIGHTBOX
+       ═══════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="High resolution sneaker viewer">
+    <button class="lightbox-close" aria-label="Close viewer">✕</button>
+    <button class="lightbox-nav prev" aria-label="Previous angle">‹</button>
+    <img src="" alt="" class="lightbox-img" />
+    <button class="lightbox-nav next" aria-label="Next angle">›</button>
+    <div class="lightbox-hint">Click image to zoom 2x • Drag to pan • ESC to exit</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       WISHLIST SLIDE-OVER DRAWER
+       ═══════════════════════════════════════════════ -->
+  <div class="wishlist-drawer-backdrop" id="wishlist-backdrop"></div>
+  <aside class="wishlist-drawer" id="wishlist-drawer" aria-label="Saved sneakers wishlist">
+    <div class="wishlist-drawer-header">
+      <h3>Saved Wishlist <span id="wishlist-count-label" style="font-size: var(--font-sm); opacity: 0.6;">(0)</span></h3>
+      <button class="modal-close" style="position: static;" aria-label="Close wishlist">✕</button>
+    </div>
+    <div class="wishlist-drawer-body">
+      <!-- Rendered dynamically by wishlistDrawer.js -->
+    </div>
+    <div class="wishlist-drawer-footer">
+      <button class="wishlist-enquire-all-btn" id="wishlist-enquire-all">
+        <span>💬 Enquire All Saved via WhatsApp</span>
+      </button>
+      <button class="wishlist-clear-btn" id="wishlist-clear">Clear Wishlist</button>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       WISHLIST FLOATING ACTION BUTTON (FAB)
+       ═══════════════════════════════════════════════ -->
+  <button class="wishlist-fab" id="wishlist-fab" title="View Wishlist" aria-label="View Wishlist">
+    <span>♥</span>
+    <span class="badge" id="wishlist-fab-badge" style="display: none;">0</span>
+  </button>
+
+  <!-- ═══════════════════════════════════════════════
+       WHATSAPP MULTI-SELECT ENQUIRY TRAY
+       ═══════════════════════════════════════════════ -->
+  <div class="enquiry-tray" id="enquiry-tray" role="region" aria-label="WhatsApp Enquiry Tray">
+    <div class="container enquiry-tray-inner">
+      <div class="enquiry-tray-count">0 sneakers selected</div>
+      <div class="enquiry-tray-items"></div>
+      <div style="display: flex; align-items: center; gap: var(--space-3);">
+        <button id="enquiry-tray-clear" style="font-size: var(--font-xs); opacity: 0.6; padding: 4px 8px; cursor: pointer;">Clear</button>
+        <button class="enquiry-tray-send">
+          <span>💬 Send WhatsApp Enquiry</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       TOAST NOTIFICATIONS CONTAINER
+       ═══════════════════════════════════════════════ -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       JAVASCRIPT MODULES
+       ═══════════════════════════════════════════════ -->
+  <script src="js/api.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/components/lightbox.js"></script>
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/tray.js"></script>
+  <script src="js/components/wishlistDrawer.js"></script>
+  <script src="js/components/search.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
